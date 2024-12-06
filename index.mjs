@@ -1,8 +1,8 @@
 import express from 'express';
+import { create } from 'express-handlebars';
+import { get, push, ref, remove, update } from 'firebase/database';
+import methodOverride from 'method-override';
 import { db } from './database/db.mjs';
-import { get, ref, push, remove, update } from 'firebase/database';
-import {create} from 'express-handlebars';
-import methodOverride from 'method-override'; 
 
 const app = express();
 
@@ -75,7 +75,7 @@ app.post('/cad', async (req, res) => {
 
     await push(dbRef, novoContrato);
 
-    console.log(`Empresa "${empresa}" adicionada com sucesso.`);
+    console.log(`Empresa "${empresa}" adicionada com sucesso.`);    
 
     // Redireciona para a página principal para atualizar a lista
     res.redirect('/');
@@ -109,8 +109,8 @@ app.post('/del', async (req, res) => {
   }
 });
 
-app.get('/editar', async (req, res) => {
-  const { chave } = req.query;
+app.post('/editar', async (req, res) => {
+  const { chave } = req.body;
 
   if (!chave) {
     console.log("Não possui chave.");
@@ -147,14 +147,7 @@ app.get('/editar', async (req, res) => {
 
     console.log(`Empresa "${dadosEdicao.empresa}" encaminhada com sucesso.`);
 
-    const empresas = Object.entries(data).map(([key, contrato]) => ({
-      chave: key,
-      empresa: contrato.empresa,
-    }));
-
-    console.log("Nomes das empresas recuperados:", empresas);
-
-    res.render('update', { dadosEdicao, empresas });
+    res.render('update', { dadosEdicao });
 
   } catch (e) {
     console.error("Erro ao recuperar contrato no Firebase:", e);
@@ -182,7 +175,6 @@ app.post('/update', async (req, res) => {
 
     console.log("Sucesso ao recuperar dados:", data);
 
-    // Encontra o contrato correspondente pela chave
     const contrato = Object.entries(data).find(([key]) => key === chave);
 
     if (!contrato) {
@@ -215,9 +207,6 @@ app.post('/update', async (req, res) => {
     res.status(500).send("Erro ao atualizar contrato.");
   }
 });
-
-
-
 
 app.listen(3000, () => {
   console.log("Servidor rodando na porta 3000");

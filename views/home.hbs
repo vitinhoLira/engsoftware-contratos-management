@@ -2,12 +2,13 @@
 
     <h3 style="color: red; font-weight: bold;">{{message}}</h3>
      <h3 style="color: green; font-weight: bold;">{{successMessage}}</h3>
+     <h3 style="color: green; font-weight: bold;">{{messageCad}}</h3>
     <h1>Cadastre um contrato</h1><br>
 
-    <input type="text" name="aluno" id="aluno" placeholder="nome do aluno"><br><br>
-    <input type="text" name="orientador" id="orientador" placeholder="nome do orientador"><br><br>
-    <input type="text" name="empresa" id="empresa" placeholder="nome do empresa"><br><br>
-    <input type="text" name="agente" id="agente" placeholder="nome do agente de integração"><br><br>
+    <input type="text" name="aluno" id="aluno" placeholder="Nome do aluno"><br><br>
+    <input type="text" name="orientador" id="orientador" placeholder="Nome do orientador"><br><br>
+    <input type="text" name="empresa" id="empresa" placeholder="Nome da empresa"><br><br>
+    <input type="text" name="agente" id="agente" placeholder="Nome do agente"><br><br>
 
     <input type="submit" value="inserir">
 
@@ -19,13 +20,13 @@
     <li>
         <form action="/del" method="post" style="display: inline;">
             <span>{{this.empresa}}</span>
-            <input type="hidden" name="chave" value="{{this.chave}}">
+            <input type="hidden" name="chave" value="{{this.chave}}"><br>
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="Excluir">
+            <input type="submit" value="excluir">
         </form>
-        <form action="/editar" method="get" style="display: inline;">
+        <form action="/editar" method="post" style="display: inline;">
             <input type="hidden" name="chave" value="{{this.chave}}">
-            <input type="submit" value="Editar">
+            <input type="submit" value="info">
         </form>
-    </li>
+    </li><br>
     {{/each}}
