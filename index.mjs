@@ -81,7 +81,7 @@ app.post("/cad", async(req, res) => {
         console.log(`Empresa "${empresa}" adicionada com sucesso.`);
 
         // Redireciona para a página principal para atualizar a lista
-        res.redirect("/");
+        res.redirect("/contratos");
     } catch (e) {
         console.error("Erro ao adicionar empresa no Firebase:", e);
         res.status(500).send("Erro ao adicionar empresa.");
@@ -103,7 +103,7 @@ app.post("/del", async(req, res) => {
 
         console.log(`Empresa "${chave}" deletado com sucesso.`);
 
-        res.redirect("/");
+        res.redirect("/contratos");
     } catch (e) {
         console.error("Erro ao deletar empresa no Firebase:", e);
         res.status(500).send("Erro ao deletar empresa.");

@@ -1,14 +1,33 @@
 <form action="/update" method="post" style="display: inline;">
   <h1>Atualize o contrato</h1>
-  <input type="hidden" name="chave" value="{{this.dadosEdicao.chave}}"><br>
-  <input type="text" name="aluno" value="{{this.dadosEdicao.aluno}}" placeholder="Nome do aluno"><br><br>
-  <input type="text" name="orientador" value="{{this.dadosEdicao.orientador}}" placeholder="Nome do orientador"><br><br>
-  <input type="text" name="empresa" value="{{this.dadosEdicao.empresa}}" placeholder="Nome da empresa"><br><br>
-  <input type="text" name="agente" value="{{this.dadosEdicao.agente}}" placeholder="Nome do agente"><br><br>
-  <input type="submit" value="Salvar">
+  <input type="hidden" name="chave" value="{{this.dadosEdicao.chave}}" /><br />
+  <input
+    type="text"
+    name="aluno"
+    value="{{this.dadosEdicao.aluno}}"
+    placeholder="Nome do aluno"
+  /><br /><br />
+  <input
+    type="text"
+    name="orientador"
+    value="{{this.dadosEdicao.orientador}}"
+    placeholder="Nome do orientador"
+  /><br /><br />
+  <input
+    type="text"
+    name="empresa"
+    value="{{this.dadosEdicao.empresa}}"
+    placeholder="Nome da empresa"
+  /><br /><br />
+  <input
+    type="text"
+    name="agente"
+    value="{{this.dadosEdicao.agente}}"
+    placeholder="Nome do agente"
+  /><br /><br />
+  <input type="submit" value="Salvar" />
 </form>
 
-<form action="/" style="display: inline;">
-  <input type="submit" value="voltar">
+<form action="/contratos" style="display: inline;">
+  <input type="submit" value="voltar" />
 </form>
-
